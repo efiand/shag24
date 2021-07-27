@@ -1,0 +1,18 @@
+<section class="content" id="shodhan-cert">
+	<h2>{{ INSTRUCTORS_TITLE }}</h2>
+
+	<ul>
+		{% for ITEM in SHODHAN_CERT %}
+			{% set NAME %}
+				{{ ITEM.name }}{% if ITEM.place %}, {{ ITEM.place }}{% if ITEM.country %} ({{ ITEM.country }}){% endif %}{% endif %}
+			{% endset %}
+			<li>
+				{% if ITEM.url %}
+					<a class="link" href="{{ ITEM.url }}" target="_blank">{{ NAME }}</a>
+				{% else %}
+					{{ NAME }}
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+</section>

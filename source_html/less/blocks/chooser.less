@@ -1,0 +1,120 @@
+.chooser {
+	position: relative;
+	white-space: nowrap;
+	color: var(--color-dark);
+
+	.content & {
+		display: table;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+.chooser__checker {
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: inherit;
+	color: var(--color-white);
+	background-color: transparent;
+	-webkit-tap-highlight-color: transparent;
+	border: none;
+	outline: none;
+	transition-property: color, opacity, background-color, border-color, box-shadow;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		color: var(--color-primary);
+	}
+
+	&:active {
+		color: var(--color-primary);
+		opacity: 0.6;
+		transition-duration: 0.1s;
+	}
+
+	&::after {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 1em / 3;
+		border-top: 1em / 3 solid;
+		border-right: 1em / 6 solid transparent;
+		border-left: 1em / 6 solid transparent;
+		transition: transform 0.3s ease-in-out;
+
+		.is-open & {
+			transform: scaleY(-1);
+		}
+	}
+
+	.is-open & {
+		color: var(--color-primary);
+	}
+
+	.content & {
+		color: inherit;
+	}
+}
+
+.chooser__drop {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1;
+	padding: 10px 15px 20px;
+	column-count: 2;
+	visibility: hidden;
+	color: var(--color-dark);
+	background-color: var(--color-white);
+	border: 1px solid;
+	border-radius: 4px;
+	transform: scaleY(0);
+	transform-origin: 50% 0;
+	opacity: 0;
+	transition: transform 0.2s ease-in, opacity 0.2s ease-in, visibility 0s 0.3s;
+
+	@media @mobile-only {
+		.site-8 & {
+			left: -2rem;
+			max-width: 100vw;
+		}
+	}
+
+	@media @tablet {
+		padding: 10px 20px 20px;
+		column-gap: 2em;
+	}
+
+	.is-open & {
+		visibility: visible;
+		transform: scaleY(1);
+		opacity: 1;
+		transition: transform 0.3s ease-out;
+	}
+
+	li {
+		padding: 10px 0 0;
+		padding-left: 0 !important;
+		list-style: none;
+
+		&::before {
+			content: none !important;
+		}
+	}
+}
+
+.chooser__item {
+	display: block;
+	font-size: inherit;
+	text-decoration: none;
+	white-space: nowrap;
+
+	&--active {
+		color: var(--color-primary);
+	}
+}

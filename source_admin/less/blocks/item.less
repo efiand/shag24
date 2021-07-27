@@ -1,0 +1,100 @@
+.item {
+	position: relative;
+	padding: 0.75em 1.5em;
+
+	@media @tablet {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	&:nth-child(odd):not(&--choosed) {
+		background-color: var(--color-grey);
+	}
+
+	&--choosed {
+		background-color: var(--color-bg);
+	}
+}
+
+.item__number {
+	display: inline-block;
+	vertical-align: baseline;
+	min-width: 40px;
+	margin-right: 1em;
+	opacity: 0.5;
+}
+
+.item__city-alias {
+	min-width: 60px;
+}
+
+.item__title {
+	font-size: 1rem;
+	text-align: left;
+
+	@media @mobile-only {
+		display: block;
+		margin-right: 2em;
+	}
+}
+
+.item__description {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 1em;
+	opacity: 0.5;
+
+	@media @mobile-only {
+		display: block;
+		margin-right: 2em;
+		margin-left: 0;
+	}
+}
+
+.item__form {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: 1em 0 0;
+}
+
+.item__media {
+	margin-top: 0.5em;
+}
+
+.item__checker {
+	align-self: flex-end;
+
+	@media @desktop {
+		margin-bottom: 31px;
+	}
+
+	span::before {
+		background-color: var(--color-white);
+	}
+}
+
+.item__submit {
+	text-align: right;
+
+	@media @desktop {
+		align-self: flex-end;
+	}
+
+	button {
+		margin-bottom: 20px;
+
+		@media @tablet {
+			width: 50%;
+		}
+	}
+}
+
+.item__del {
+	@media @mobile-only {
+		position: absolute;
+		top: 0.75em;
+		right: 1.5em;
+	}
+}

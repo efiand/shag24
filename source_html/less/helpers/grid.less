@@ -1,0 +1,193 @@
+.center {
+	display: table;
+	margin-right: auto !important;
+	margin-left: auto !important;
+}
+
+.ib {
+	display: inline-block !important;
+	vertical-align: baseline;
+}
+
+.ib-m {
+	display: inline-block !important;
+	vertical-align: middle;
+}
+
+.ib-t {
+	display: inline-block !important;
+	vertical-align: top;
+}
+
+.grid {
+	@media @desktop {
+		display: flex;
+		flex-wrap: wrap;
+		width: calc(100% + 40px);
+		margin-left: -20px;
+	}
+
+	.wysiwyg & {
+		@media @tablet {
+			display: flex;
+			flex-wrap: wrap;
+			width: calc(100% + 40px);
+			margin-left: -20px;
+		}
+	}
+}
+
+.col,
+.col-4,
+.col-3,
+.col-3-2,
+.col-l {
+	box-sizing: border-box;
+	margin-bottom: 2em;
+
+	@media @desktop {
+		margin-bottom: 0;
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+
+	.wysiwyg & {
+		outline: 1px dashed var(--color-blacky-fade-50);
+
+		@media @tablet {
+			min-width: 0;
+			margin-bottom: 0;
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+
+		p {
+			min-height: 1.3rem;
+		}
+	}
+
+	> img {
+		display: block;
+	}
+}
+
+.col {
+	@media @tablet {
+		min-width: 620px;
+	}
+
+	@media @desktop {
+		width: 50%;
+	}
+
+	.wysiwyg & {
+		@media @tablet {
+			width: 50%;
+		}
+	}
+}
+
+.col-4 {
+	@media @tablet {
+		min-width: 310px;
+	}
+
+	@media @desktop {
+		width: 25%;
+	}
+
+	.wysiwyg & {
+		@media @tablet {
+			width: 25%;
+		}
+	}
+}
+
+.col-3 {
+	@media @tablet {
+		min-width: 1240px * 1/3;
+	}
+
+	@media @desktop {
+		width: 100% * 1/3;
+	}
+
+	.wysiwyg & {
+		@media @tablet {
+			width: 100% * 1/3;
+		}
+	}
+}
+
+.col-3-2 {
+	@media @tablet {
+		min-width: 1240px * 2/3;
+	}
+
+	@media @desktop {
+		width: 100% * 2/3;
+	}
+
+	.wysiwyg & {
+		@media @tablet {
+			width: 100% * 2/3;
+		}
+	}
+}
+
+.col-l {
+	@media @desktop {
+		width: 75%;
+	}
+
+	.wysiwyg & {
+		@media @tablet {
+			width: 75%;
+		}
+	}
+}
+
+.half {
+	display: block !important;
+
+	@media @tablet {
+		max-width: 50%;
+	}
+}
+
+.tm-gap {
+	margin-top: 1rem !important;
+}
+
+.t-gap {
+	margin-top: 2em !important;
+}
+
+.t-neg {
+	margin-top: -2em !important;
+}
+
+.bm-gap {
+	margin-bottom: 1rem !important;
+}
+
+.b-gap {
+	margin-bottom: 2em !important;
+}
+
+.v-gap {
+	margin-top: 2em !important;
+	margin-bottom: 2em !important;
+}
+
+.l-gap {
+	@media @tablet {
+		margin-left: 2em !important;
+	}
+}
+
+.lm-gap {
+	@media @tablet {
+		margin-left: 1em !important;
+	}
+}

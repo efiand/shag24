@@ -1,0 +1,17 @@
+<section class="content" id="{{ PLACE_FRAGMENT_SWITCHER.id|default('place_fragment_switcher') }}">
+	<h2 class="sr-only">{{ PLACE_FRAGMENT_SWITCHER.title }}</h2>
+	<div class="chooser place-fragment-chooser">
+		<button class="chooser__checker" style="font-size: {{ (PLACE_FRAGMENT_SWITCHER.titleSize|default(16))/16 }}rem">
+			{{ PLACE_FRAGMENT_SWITCHER.title }}
+		</button>
+		<ul class="chooser__drop">
+			{% for place in PLACE_FRAGMENT_SWITCHER.places %}
+				<li>
+					<button class="chooser__item" data-fragment="place_switch_{{ place.alias }}">
+						{{ place.title }}
+					</button>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>

@@ -1,0 +1,40 @@
+{% extends 'main.twig' %}
+
+{% block head %}
+	<link href="//fonts.googleapis.com/css?family=PT+Serif:400,700,700italic,400italic&amp;subset=cyrillic" rel="stylesheet">
+{% endblock %}
+
+{% block header_top %}
+	<div class="header__top">
+		<div class="header__contacts container">
+			{% include 'fragments/socials.twig' with { mix: 'header__socials' } %}
+			{% include 'fragments/tel-links.twig' with {
+				mix: 'header__tel-link header__contact-link',
+				tel: SITE_TEL
+			} %}
+			<p class="header__contact hidden-mobile">Красноярск, ул. Каратанова, 11, КДЦ "Особняк"</p>
+			<a class="header__contact-link hidden-mobile" href="mailto:{{ SITE_MAIL }}">{{ SITE_MAIL }}</a>
+		</div>
+	</div>
+{% endblock %}
+
+{% block footer_contacts %}
+	<div class="grid">
+		<div class="col">
+			{% if FOOTER_CONTACTS_BLOCK %}
+				{{ FOOTER_CONTACTS_BLOCK }}
+			{% else %}
+				<h2>{{ SITE_TITLE }}</h2>
+				<div class="footer__contacts-link">
+					{% include "fragments/tel-links.twig" with { tel: SITE_TEL } %}
+				</div>
+				<a class="footer__contacts-link" href="mailto:{{ SITE_MAIL }}">{{ SITE_MAIL }}</a>
+			{% endif %}
+		</div>
+		<div class="col">
+			<div class="footer__map media">
+				<iframe class="media__content" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDSOw3TYN-VvZPNAHs4ItKzdr62LqXuJuM&amp;q=56.01192,92.8909" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+{% endblock %}

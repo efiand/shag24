@@ -1,0 +1,116 @@
+<form class="popup form form--ticket" name="{{ form.payment_target ? 'TinkoffPayForm' }}" data-id="form-{{ form.id }}">
+	<input data-mode="ticket" type="hidden" name="form_id" value="{{ form.id }}">
+	<input data-mode="ticket" type="hidden" name="topic" value="{{ form.topic }}">
+	<input class="form__page-holder{{ form.switch_place ? '-choosable' }}" data-mode="ticket" type="hidden" name="page" value="{{ URL }}">
+	{% if not form.attach and not form.test %}
+		{# Не шлем уведомление из заявок на подарки и из тестов #}
+		<input data-mode="ticket" type="hidden" name="receivers" value="{{ RECEIVERS }}">
+	{% endif %}
+	<input data-mode="ticket" type="hidden" name="sender" value="{{ SENDER }}">
+	<input data-mode="ticket" type="hidden" name="sender_name" value="{{ SENDER_NAME }}">
+
+	{% if form.payment_target %}
+		<input type="hidden" name="order" value="{{ date().timestamp }}">
+		<input data-mode="ticket" type="hidden" name="payment_status" value="Создан">
+		<input data-mode="pay" type="hidden" name="terminalkey" value="{{ SHOP }}">
+		<input data-mode="pay" type="hidden" name="frame" value="false">
+		<input data-mode="pay" type="hidden" name="language" value="ru">
+		<input data-mode="pay" type="hidden" name="amount" value="{{ form.price }}">
+		<input data-mode="pay" type="hidden" name="description" value="{{ form.payment_target }}">
+		<input data-mode="pay" type="hidden" name="receipt" value="">
+	{% endif %}
+
+	<fieldset class="form__fieldset form__inner popup__inner {{ form.test ? 'popup__inner--wide' }}">
+		<legend class="form__topic popup__header">{{ form.topic ?? 'Заявка на участие' }}</legend>
+
+		{% if form.test %}
+			<input type="hidden" name="test" value="0">
+			<div class="b-gap">{{ form.test }}</div>
+		{% endif %}
+
+		{% if form.choose_field %}
+			<label class="field form__choose">
+				<select class="field__input" name="choose" required>
+					{% for value, option in form.choose_field.params %}
+						{% if form.choose_field.has_keys %}
+							<option value="{{ value }}">{{ option }}</option>
+						{% else %}
+							<option>{{ option }}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+				<span class="field__label field__label--required">Варианты выбора</span>
+			</label>
+		{% endif %}
+
+		<div class="form__fields">
+			<label class="field">
+				<input class="field__input" name="name" required>
+				<span class="field__label field__label--required">Фамилия и имя</span>
+			</label>
+			<label class="field">
+				{# Поле обязательно для совершения платежей #}
+				<input class="field__input" name="mail" type="email" pattern="^[.a-zA-Z0-9_-]+@[а-яА-Яa-zA-Z0-9-]+\.[а-яА-Яa-zA-Z]{2,6}$" required>
+				<span class="field__label field__label--required">E-mail</span>
+			</label>
+			<label class="field">
+				{# Поле обязательно для совершения платежей #}
+				<input class="field__input" name="phone" type="tel" pattern="^\+?[0-9()\- ]{7,19}$" required>
+				<span class="field__label field__label--required">Телефон</span>
+			</label>
+			{% if form.has_city %}
+				<label class="field">
+					<input class="field__input" name="city" required>
+					<span class="field__label field__label--required">Ваш город проживания</span>
+				</label>
+			{% endif %}
+			{% if form.has_instagram %}
+				<label class="field">
+					<input class="field__input" name="instagram">
+					<span class="field__label">Ваш никнейм в Инстаграм</span>
+				</label>
+			{% endif %}
+			{% if form.message_field %}
+				<label class="field field--js">
+					{% if form.require_message %}
+						<textarea class="field__input field__input--message" name="message" required></textarea>
+						<span class="field__label field__label--required">{{ form.message_field }}</span>
+					{% else %}
+						<textarea class="field__input field__input--message" name="message"></textarea>
+						<span class="field__label">{{ form.message_field }}</span>
+					{% endif %}
+				</label>
+			{% endif %}
+			{% if form.has_promocode %}
+				<label class="field">
+					<input class="field__input" name="promocode" autocomplete="off">
+					<span class="field__label">Промокод для получения подарка (если знаете)</span>
+				</label>
+			{% endif %}
+			<label class="checker">
+				<input class="sr-only" name="agree" type="checkbox" value="1" required>
+				<span class="checker__label">
+					{% if form.payment_doc %}
+						Согласен с <a href="/agree-payment?event={{ form.payment_doc }}&amp;page={{ URL }}" target="_blank">условиями договора</a>
+					{% elseif PAGE == '/agree' %}
+						Согласен на обработку персональных данных
+					{% else %}
+						Согласен на <a href="/agree" target="_blank">обработку персональных данных</a>
+					{% endif %}
+				</span>
+			</label>
+			<button class="button form__submit popup__resizer" type="submit">{{ form.submit_title ?? 'Отправить' }}</button>
+		</div>
+	</fieldset>
+
+	<div class="form__preloader popup__inner hidden">
+		<div class="form__preloader-inner" aria-label="Подождите, пока загрузятся данные…"></div>
+	</div>
+
+	<div class="form__status-block form__inner popup__inner hidden">
+		<div class="form__status"></div>
+		<button class="button form__status-closer popup__closer" type="button">OK</button>
+	</div>
+
+	<button class="popup__closer popup__cross" type="button" aria-label="Закрыть окно"></button>
+</form>

@@ -1,0 +1,17 @@
+<div class="chooser">
+	<button class="chooser__checker">{{ PLACE_CHOOSER_TITLE }}</button>
+	<ul class="chooser__drop">
+		<li>
+			<a href="/" class="chooser__item {{ not PAGE_ALIAS and not EVENTS_CITY ? 'chooser__item--active' }}">
+				Все
+			</a>
+		</li>
+		{% for place in PLACES %}
+			<li>
+				<a href="/{{ place.alias }}" class="chooser__item {{ place.alias == PAGE_ALIAS ? 'chooser__item--active' }}">
+					{{ place.title ~ (place.country ? ', ' ~ place.country) }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

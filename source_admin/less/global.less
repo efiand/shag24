@@ -1,0 +1,87 @@
+@import "../../source_html/less/global";
+
+@media @mobile-only {
+	/* mobile-only */
+}
+
+@media @no-desktop {
+	/* no-desktop */
+}
+
+@media @tablet {
+	/* tablet */
+}
+
+@media @tablet-only {
+	/* tablet-only */
+}
+
+@media @desktop {
+	/* desktop */
+}
+
+@media @lg-desktop {
+	/* no-desktop */
+}
+
+html {
+	--color-grey: #e8ebed;
+	--color-bg: #b8c6cf;
+	--color-bg-fade: rgba(184, 198, 207, 0.95);
+	font-family: var(--font) !important;
+	background-color: transparent !important;
+
+	.shag24 {
+		--color-primary: #a059de;
+		--color-bg: #d1d4d6;
+		--color-bg-fade: rgba(209, 212, 214, 0.95);
+	}
+}
+
+main {
+	margin: 0 !important;
+}
+
+a {
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		color: var(--color-primary);
+	}
+}
+
+strong {
+	color: var(--color-primary);
+
+	.khara & {
+		color: var(--color-blacky);
+	}
+}
+
+select {
+	cursor: pointer;
+}
+
+b {
+	font-weight: 600;
+}
+
+img {
+	pointer-events: none;
+}
+
+h2 {
+	margin: 0 0 0.75em;
+	font-weight: 500;
+	font-size: 20px;
+	color: var(--color-blacky);
+
+	@media @tablet {
+		font-size: 24px;
+	}
+
+	.khara & {
+		color: var(--color-dark);
+	}
+}

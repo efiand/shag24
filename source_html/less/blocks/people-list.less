@@ -1,0 +1,31 @@
+.people-list__list {
+	margin-bottom: -2rem;
+
+	@media @desktop {
+		margin-bottom: -3rem;
+	}
+
+	.people-list:last-child & {
+		margin-bottom: 0;
+	}
+
+	img {
+		margin: 0 auto;
+	}
+}
+
+.people-list__heading {
+	margin: 1rem 0 !important;
+}
+
+.people-list__description {
+	margin-bottom: 3rem;
+
+	@media @desktop {
+		margin-bottom: 1rem;
+	}
+
+	> :last-child {
+		margin-bottom: 0 !important;
+	}
+}
