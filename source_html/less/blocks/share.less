@@ -1,0 +1,36 @@
+.share {
+	margin-top: 20px;
+	text-align: center;
+
+	@media @tablet {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	@media @desktop {
+		justify-content: flex-end;
+		margin-top: 0;
+		text-align: left;
+	}
+}
+
+.share__like {
+	@media @tablet {
+		margin-left: 20px;
+	}
+
+	&--vk {
+		position: relative;
+		margin: 0 auto 2px;
+
+		@media @tablet {
+			margin: 0;
+		}
+	}
+
+	&--ok {
+		position: relative;
+		top: 2px;
+	}
+}

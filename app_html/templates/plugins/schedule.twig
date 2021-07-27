@@ -1,0 +1,78 @@
+<section class="schedule {{ SCHEDULE_SWITCHABLE ? 'switchable' }}" id="schedule">
+	<header class="schedule__header">
+		<h2 class="schedule__heading {{ SCHEDULE_SWITCHABLE ? 'switchable__toggler' }}">
+			{{ SCHEDULE_TITLE ?: 'Расписание мероприятий' }}
+			{% if SCHEDULE_SWITCHABLE %}
+				<button class="switchable__button" aria-label="Переключить видимость"></button>
+			{% endif %}
+		</h2>
+		{% if SCHEDULE_HEADLINK_TITLE and SCHEDULE_HEADLINK_HREF %}
+			<a class="schedule__link schedule__link--title" href="{{ SCHEDULE_HEADLINK_HREF }}">
+				{{ SCHEDULE_HEADLINK_TITLE }}
+			</a>
+		{% endif %}
+	</header>
+	<ul class="schedule__list {{ SCHEDULE_SWITCHABLE ? 'switchable__details' }}">
+		{% for ITEM in SCHEDULE %}
+			<li class="grid schedule__item b-gap">
+				{% if IMG_MODE or EVENTS_CITY.alias %}
+					<div class="col schedule__gap {{ IMG_MODE ? 'schedule__img-wrap' : 'schedule__place-wrap'}}">
+						{% if ITEM.img %}
+							{% if ITEM.link %}
+								<a href="{{ ITEM.link }}" target="_blank" rel="noopener" title="Подробнее">
+									<img src="{{ ITEM.img }}?version={{ VERSION }}" width="72" height="72" alt="{{ ITEM.img_alt }}">
+								</a>
+							{% else %}
+								<img src="{{ ITEM.img }}?version={{ VERSION }}" width="72" height="72" alt="{{ ITEM.img_alt }}">
+							{% endif %}
+						{% endif %}
+						<div class="schedule__param schedule__param--with-icon">
+							<svg aria-hidden="true"><use xlink:href="#date"/></svg>
+							{{ ITEM.datetime_start|time_range(ITEM.datetime_end, true, ITEM.place == 'Онлайн') }}
+						</div>
+						{% if ITEM.place or ITEM.venue %}
+							<div class="schedule__param schedule__param--with-icon">
+								<svg aria-hidden="true"><use xlink:href="#place"/></svg>
+								{% if ITEM.place %}
+									{{ ITEM.place }}{% if ITEM.country %} ({{ ITEM.country }}){% endif %}{% if ITEM.venue %}, {% endif %}
+								{% endif %}
+								{{ ITEM.venue }}
+							</div>
+						{% endif %}
+					</div>
+				{% else %}
+					<div class="col-4 schedule__gap">
+						<div class="schedule__param schedule__param--with-icon">
+							<svg aria-hidden="true"><use xlink:href="#date"/></svg>
+							{{ ITEM.datetime_start|time_range(ITEM.datetime_end, true, ITEM.place == 'Онлайн') }}
+						</div>
+					</div>
+					<div class="col-4 schedule__gap">
+						<div class="schedule__param schedule__param--with-icon">
+							<svg aria-hidden="true"><use xlink:href="#place"/></svg>
+							{% if ITEM.place %}
+								{{ ITEM.place }}{% if ITEM.country %} ({{ ITEM.country }}){% endif %}{% if ITEM.venue %}, {% endif %}
+							{% endif %}
+							{{ ITEM.venue }}
+						</div>
+					</div>
+				{% endif %}
+				<div class="col schedule__gap">
+					<div class="schedule__param schedule__param--name">
+						{{ ITEM.title }}
+						{% if (ALL_FLAG or SCHEDULE_INSTRUCTOR_FLAG) and ITEM.instructor %}
+							<em class="schedule__instructor">Ведёт <b>{{ ITEM.instructor }}</b></em>
+						{% endif %}
+					</div>
+				</div>
+				{% if ITEM.link %}
+					<a class="schedule__link schedule__link--text schedule__gap" href="{{ ITEM.link }}" target="_blank" rel="noopener">
+						Подробнее
+					</a>
+				{% endif %}
+			</li>
+		{% else %}
+			<p class="center">Актуальных мероприятий нет.</p>
+		{% endfor %}
+	</ul>
+</section>

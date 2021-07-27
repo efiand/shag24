@@ -1,0 +1,24 @@
+@import "../../../source_html/less/blocks/field";
+
+.field__input {
+	&--message {
+		height: 150px;
+		resize: none;
+	}
+
+	.validable &:invalid {
+		border-color: var(--color-error);
+		animation: shake 0.3s ease-in-out;
+
+		& + span { // stylelint-disable-line
+			color: var(--color-error);
+			animation: shake 0.3s ease-in-out;
+		}
+
+		&[type="checkbox"] + span { // stylelint-disable-line
+			&::before { // stylelint-disable-line
+				border-color: var(--color-error);
+			}
+		}
+	}
+}

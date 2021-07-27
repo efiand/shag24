@@ -1,0 +1,62 @@
+.wysiwyg {
+	position: relative;
+	min-height: calc(100vh - 2em);
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: -50vw;
+		bottom: 0;
+		left: -50vw;
+		z-index: -1;
+		background-color: inherit;
+	}
+
+	&.content {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1em;
+	}
+
+	.button-wrap {
+		display: table;
+		box-sizing: border-box;
+		padding: 11px 35px;
+		font-weight: 500;
+		font-size: 15px;
+		line-height: 1.2;
+		text-align: center;
+		color: var(--color-white);
+		background-color: var(--color-primary);
+		border-radius: 4px;
+	}
+
+	.media-wrap {
+		padding: 10px 35px;
+		font-weight: 500;
+		font-size: 15px;
+		line-height: 1.2;
+		color: var(--color-white);
+		background-color: var(--color-blacky);
+	}
+
+	.unit-wrap {
+		position: relative;
+		display: block; // в пользовательском интерфейсе изначально не виден
+		min-height: 1rem; // для блока выбора шаблонов в визвиге
+		margin: 0.5rem 0;
+		padding: 0.25rem 8rem 4px 0.5rem;
+		border: 2px dashed var(--color-primary);
+
+		&::after {
+			content: "Номер человека";
+			position: absolute;
+			top: 50%;
+			right: 0.5rem;
+			font-size: 0.8rem;
+			color: var(--color-primary);
+			transform: translateY(-50%);
+		}
+	}
+}

@@ -1,0 +1,17 @@
+<div class="chooser">
+	<button class="chooser__checker">{{ CHOOSER_TITLE }}</button>
+	<ul class="chooser__drop">
+		<li>
+			<a href="/masters" class="chooser__item {{ PAGE == '/masters' ? 'chooser__item--active' }}">
+				Все
+			</a>
+		</li>
+		{% for master in MASTERS %}
+			<li>
+				<a href="/master/{{ master.id }}" class="chooser__item {{ master.instructor == CURRENT_MASTER ? 'chooser__item--active' }}">
+					{{ master.instructor }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

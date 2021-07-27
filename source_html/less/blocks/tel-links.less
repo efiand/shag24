@@ -1,0 +1,38 @@
+.tel-links {
+	display: flex;
+	transition: background-color 0.3s ease-in-out;
+
+	a {
+		display: block;
+		text-decoration: none;
+
+		&:hover,
+		&:focus {
+			color: inherit;
+			opacity: 0.5;
+		}
+	}
+}
+
+.tel-links__icon {
+	line-height: 0.75;
+
+	.khara & {
+		@media @mobile-only {
+			display: none;
+		}
+	}
+
+	svg {
+		width: 1.25em;
+		height: 1.25em;
+	}
+
+	& + & {
+		margin-left: 0.25em;
+	}
+}
+
+.tel-links__link {
+	margin-left: 0.5em;
+}

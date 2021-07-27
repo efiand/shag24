@@ -1,0 +1,31 @@
+.clear-wrap {
+	position: relative;
+	padding-right: 32px;
+}
+
+.clear {
+	position: absolute;
+	top: 4px;
+	right: 0;
+	width: 10px;
+	height: 10px;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 14px;
+		height: 2px;
+		background-color: currentColor;
+	}
+
+	&::before {
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+
+	&::after {
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+}

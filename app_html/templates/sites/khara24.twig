@@ -1,0 +1,28 @@
+{% extends 'main.twig' %}
+
+{% block head %}
+	<link rel="preload" href="/fonts/roboto.woff2" as="font"  crossorigin="anonymous">
+	<link rel="preload" href="/fonts/roboto-bold.woff2" as="font"  crossorigin="anonymous">
+	<link rel="preload" href="/fonts/roboto-light.woff2" as="font"  crossorigin="anonymous">
+	<link rel="preload" href="/fonts/roboto-medium.woff2" as="font"  crossorigin="anonymous">
+	<link rel="icon" type="image/png" href="/img/khara24/favicon.png">
+	<meta name="theme-color" content="#ffffff">
+{% endblock %}
+
+{% block header_top %}
+	<div class="header__top">
+		<div class="header__contacts container">
+			{% if PLACE_CHOOSER %}
+				<div class="header__chooser-top">{{ PLACE_CHOOSER }}</div>
+			{% endif %}
+			{% if MASTER_CHOOSER %}
+				<div class="header__chooser-top">{{ MASTER_CHOOSER }}</div>
+			{% endif %}
+
+			{% include 'fragments/tel-links.twig' with {
+				mix: 'header__tel-link header__contact-link',
+				tel: SITE_TEL
+			} %}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{
+	"name": "pineglade/shag24",
+	"description": "Пакеты для работы серверной части сайта shag24.ru и связанных",
+	"require": {
+		"phpoffice/phpspreadsheet": "^1.13",
+		"swiftmailer/swiftmailer": "^6.2",
+		"twig/twig": "^3.0",
+		"voku/html-min": "^4.4",
+		"ifsnop/mysqldump-php": "^2.9"
+	}
+}

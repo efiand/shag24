@@ -1,0 +1,107 @@
+.button {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	box-sizing: border-box;
+	padding: 9px 35px 11px;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 1.2;
+	text-decoration: none;
+	text-align: center;
+	color: var(--color-white);
+	background-color: var(--color-primary);
+	border: 1px solid var(--color-primary);
+	border-radius: 4px;
+
+	svg {
+		position: relative;
+		top: 3px;
+		display: inline-block;
+		vertical-align: top;
+		margin-top: -4px;
+		pointer-events: none;
+	}
+
+	&:hover,
+	&:focus {
+		color: var(--color-primary);
+		background-color: var(--color-white);
+	}
+
+	&:active {
+		opacity: 0.6;
+	}
+
+	&--full {
+		width: 100%;
+	}
+
+	&--alter {
+		background-color: var(--color-secondary);
+		border-color: var(--color-secondary);
+
+		&:hover,
+		&:focus {
+			color: var(--color-secondary);
+		}
+
+		.rusnlp & {
+			background-color: var(--color-secondary);
+			border-color: var(--color-secondary);
+
+			&:hover,
+			&:focus {
+				color: var(--color-secondary);
+			}
+		}
+	}
+
+	.rusnlp & {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+
+		&:hover,
+		&:focus {
+			color: var(--color-primary);
+			background-color: var(--color-white);
+		}
+	}
+
+	&_progressible:disabled {
+		color: var(--color-white);
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+		opacity: 0.5;
+		cursor: progress;
+	}
+}
+
+.buttons {
+	margin-top: -8px !important;
+
+	&.t-gap {
+		margin-top: 1.5rem !important;
+	}
+
+	.button {
+		@media @tablet {
+			margin-right: 8px;
+		}
+	}
+
+	.button,
+	.button-wrap {
+		display: inline-block;
+		margin-top: 8px;
+
+		@media @mobile-only {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	.button-wrap .button {
+		margin-top: 0;
+	}
+}

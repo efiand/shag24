@@ -1,0 +1,31 @@
+{% for INSTRUCTOR in SHODHAN_INSTRUCTORS %}
+	<section class="content" id="shodhan_instructors">
+		<h2>{{ INSTRUCTOR.name }}</h2>
+		<div class="grid">
+			{% if INSTRUCTOR.img %}
+				<div class="col"><img src="{{ INSTRUCTOR.img }}?version={{ VERSION }}" alt="Фото инструктора"></div>
+			{% endif %}
+			<div class="col">
+				<h3>
+					Инструктор первого уровня
+					{% if INSTRUCTOR.shodhan_cert_flag %}
+					<br>Инструктор второго уровня
+					{% endif %}
+				</h3>
+				<p>
+					Город: {{ INSTRUCTOR.place }}{% if INSTRUCTOR.country %} ({{ INSTRUCTOR.country }}){% endif %}
+				</p>
+				{% if INSTRUCTOR.tel %}
+					<p>Телефон: <a class="link" href="tel:{{ INSTRUCTOR.tel | tel }}">{{ INSTRUCTOR.tel }}</a></p>
+				{% endif %}
+				{% if INSTRUCTOR.email %}
+					<p>E-mail: <a class="link" href="mailto:{{ INSTRUCTOR.email }}">{{ INSTRUCTOR.email }}</a></p>
+				{% endif %}
+				{% if INSTRUCTOR.url %}
+					<p>Профиль: <a class="link" href="{{ INSTRUCTOR.url }}" target="_blank">{{ INSTRUCTOR.url_text }}</a></p>
+				{% endif %}
+				{{ INSTRUCTOR.description }}
+			</div>
+		</div>
+	</section>
+{% endfor %}

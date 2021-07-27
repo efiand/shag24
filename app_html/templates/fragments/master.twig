@@ -1,0 +1,44 @@
+<section class="content" id="about">
+	<h1>{{ MASTER.name }}</h1>
+	{% if MASTER.img %}
+		<div class="grid">
+			<div class="col-3">
+				<img alt="{{ MASTER.name }}" src="{{ MASTER.img }}?version={{ VERSION }}">
+			</div>
+			<div class="col-3-2">
+				{{ MASTER.description }}
+			</div>
+		</div>
+	{% else %}
+		{{ MASTER.description }}
+		{% if master.email %}
+			<p><b>E-mail</b>: <a href="mailto:{{ master.email }}">{{ master.email }}</a></p>
+		{% endif %}
+		{% if master.url %}
+			<p><b>Сайт</b>: <a href="{{ master.url }}">{{ master.url }}</a></p>
+		{% endif %}
+		{% if master.tel %}
+			<p><b>Телефон</b>: {{ master.tel }}</p>
+		{% endif %}
+	{% endif %}
+</section>
+
+{{ SCHEDULE }}
+
+{% if VIDEOS|length %}
+	<section class="content" id="videos">
+		<h2>Несколько видео с мастером</h2>
+		<div class="grid t-neg">
+			{% for VIDEO in VIDEOS %}
+				<div class="t-gap col-3">
+					<div class="media">
+						<iframe src="{{ VIDEO.url }}" allowfullscreen></iframe>
+					</div>
+					{% if VIDEO.name %}
+						<p class="tm-gap text-center">{{ VIDEO.name }}</p>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endif %}

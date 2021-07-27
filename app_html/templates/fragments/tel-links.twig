@@ -1,0 +1,14 @@
+<p class="tel-links {{ mix }}">
+	{% set icon_mix = mix ? mix ~ '-icon' %}
+	{% set link = tel|numberize %}
+	<a class="tel-links__icon {{ icon_mix }}" href="//wa.me/{{ link }}" target="_blank" title="Написать в WhatsApp">
+		<svg aria-hidden="true"><use xlink:href="#whatsapp"/></svg>
+	</a>
+	<a class="tel-links__icon {{ icon_mix }}" href="viber://chat?number={{ link }}" target="_blank" title="Написать в Viber">
+		<svg aria-hidden="true"><use xlink:href="#viber"/></svg>
+	</a>
+	<a class="tel-links__icon {{ icon_mix }}" href="//t.me/joinchat/{{ link }}" target="_blank" title="Написать в Telegram">
+		<svg aria-hidden="true"><use xlink:href="#telegram"/></svg>
+	</a>
+	<a class="tel-links__link {{ mix ? mix ~ '-link' }}" href="tel:{{ tel|tel }}" title="Позвонить">{{ tel }}</a>
+</p>
