@@ -1,0 +1,56 @@
+{% if SCHEDULE|length %}
+	<section class="schedule" id="schedule">
+		<h2>{{ SCHEDULE_TITLE }}</h2>
+		<ul class="schedule__list">
+			{% for ITEM in SCHEDULE %}
+				<li class="grid schedule__item b-gap">
+					<div class="col-4 schedule_gap">
+						<p class="schedule__param schedule__param--with-icon">
+							<svg aria-hidden="true">
+								<use xlink:href="#date"/>
+							</svg>
+							{{ ITEM.datetime_start|time_range(ITEM.datetime_end, true) }}
+						</p>
+						{% if ITEM.price %}
+							<p class="schedule__param schedule__param--with-icon tm-gap">
+								<svg aria-hidden="true">
+									<use xlink:href="#price-label"/>
+								</svg>
+								{{ ITEM.price|format_1000 }} руб.
+							</p>
+						{% endif %}
+					</div>
+					<div class="col schedule_gap">
+						<p class="schedule__param schedule__param--with-icon">
+							<svg aria-hidden="true">
+								<use xlink:href="#place"/>
+							</svg>
+							{% if ITEM.place %}
+								{{ ITEM.place }}{% if ITEM.country %} ({{ ITEM.country }}){% endif %}
+							{% endif %}
+							{% if ITEM.venue %}
+								<br><small>{{ ITEM.venue }}</small>
+							{% endif %}
+						</p>
+					</div>
+					<div class="col-4 schedule_gap">
+						<p class="schedule__param schedule__param--gap schedule__param--with-icon">
+							<svg aria-hidden="true">
+								<use xlink:href="#person"/>
+							</svg>
+							Инструктор:<br>
+							<a class="link" href="/shodhan/instructors?id={{ ITEM.people_id }}" target="_blank">{{ ITEM.instructor }}</a><br>
+							<small>
+								{% if ITEM.email %}
+									<a href="mailto:{{ ITEM.email }}">{{ ITEM.email }}</a>
+									{% if ITEM.tel %}<br>{% endif %}
+								{% endif %}
+								{{ ITEM.tel }}
+							</small>
+						</p>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+{% endif %}

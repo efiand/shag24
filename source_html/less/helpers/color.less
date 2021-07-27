@@ -1,0 +1,130 @@
+.color-primary {
+	color: var(--color-primary);
+}
+
+.color-secondary {
+	color: var(--color-secondary);
+}
+
+.content strong,
+.accent {
+	.khara &,
+	.khara24 &,
+	.kharasho & {
+		color: var(--color-primary) !important;
+	}
+
+	.rusnlp & {
+		color: var(--color-primary) !important;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit !important;
+	}
+
+	strong {
+		color: inherit !important;
+	}
+}
+
+.alter {
+	.khara &,
+	.khara24 &,
+	.kharasho & {
+		color: var(--color-secondary) !important;
+	}
+
+	.rusnlp & {
+		color: var(--color-primary) !important;
+	}
+
+	a,
+	strong {
+		color: inherit !important;
+	}
+}
+
+.content .alter strong {
+	color: var(--color-secondary) !important;
+}
+
+.red {
+	color: var(--color-error);
+}
+
+.highlight {
+	color: var(--color-highlight);
+}
+
+.pale {
+	opacity: 0.25;
+}
+
+.accent-block,
+.grey-block {
+	section.content + & {
+		margin-top: 40px;
+
+		@media @desktop {
+			margin-top: 70px;
+		}
+	}
+
+	section.content {
+		border: none !important;
+	}
+}
+
+.accent-block {
+	color: var(--color-white) !important;
+	background-color: var(--color-primary);
+
+	h1,
+	h2 {
+		color: var(--color-white) !important;
+	}
+
+	li::before {
+		background-color: var(--color-white) !important;
+	}
+
+	.rusnlp & {
+		background-color: var(--color-primary);
+	}
+}
+
+.grey-block {
+	background-color: var(--color-grey);
+
+	.rusnlp & {
+		background-color: var(--color-grey);
+	}
+}
+
+.link {
+	color: var(--color-primary);
+
+	.rusnlp & {
+		color: var(--color-primary);
+	}
+
+	&:hover,
+	&:focus {
+		color: inherit !important;
+		cursor: pointer;
+	}
+}
+
+.placeholder,
+input::placeholder {
+	color: var(--color-blacky-fade-50);
+}
+
+.white {
+	color: var(--color-white) !important;
+
+	.admin &, #tinymce & { // stylelint-disable-line
+		color: inherit !important;
+	}
+}

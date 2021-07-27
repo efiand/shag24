@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="{{ SITE }} site-{{ SITE_ID }} page-{{ PAGE_ALIAS }} {{ BODY_CLASSES }}" lang="ru" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<title>{{ HEAD_TITLE }}</title>
+	<meta name="description" content="{{ SITE_DESCRIPTION }}">
+	<meta name="apple-mobile-web-app-title" content="{{ HEAD_TITLE }}">
+	<link rel="canonical" href="//{{ URL }}">
+	<link rel="stylesheet" href="/css/style.min.css?version={{ VERSION }}">
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:type" content="website">
+	<meta property="og:determiner" content="the">
+	<meta property="og:title" content="{{ HEAD_TITLE }}">
+	<meta property="og:description" content="{{ SITE_DESCRIPTION }}">
+	<meta property="og:url" content="//{{ URL }}">
+	<meta property="og:site_name" content="{{ site_name }}">
+	<meta name="twitter:description" content="{{ SITE_DESCRIPTION }}">
+	<meta name="twitter:title" content="{{ HEAD_TITLE }}">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	{% if OG_IMAGE %}
+		<meta property="og:image" content="{{ OG_IMAGE.url }}">
+		<meta property="og:image:width" content="{{ OG_IMAGE.width }}">
+		<meta property="og:image:height" content="{{ OG_IMAGE.height }}">
+		<meta property="og:image:alt" content="{{ OG_IMAGE.alt }}">
+		<meta name="twitter:card" content="summary_large_image">
+	{% endif %}
+	{% block head %}{% endblock %}
+	{% if HAS_PAYMENT %}
+		<script src="//securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
+	{% endif %}
+	{{ SITE_HEAD_CODE }}
+	{{ HEAD }}
+</head>
+
+<body class="{{ IS_DEV ? 'dev' }} js-fullwidth">
+	<div style="display: none">
+		{% include 'sprite.min.svg' %}
+	</div>
+	{% apply typograph %}
+		{% if SITE_MENU or PLACE_CHOOSER %}
+			<header class="header js-fullwidth">
+				{% block header_top %}{% endblock %}
+				<nav class="container header__nav">
+					{% block header_logo %}{% endblock %}
+					{% if SITE_MENU|length %}
+						<ul class="header__menu">
+							{% for item in SITE_MENU %}
+								<li class="header__menu-item">
+									{% if item.href == PAGE %}
+										<a class="header__link header__link--active">{{ item.text }}</a>
+									{% elseif item.blank %}
+										<a class="header__link" href="{{ item.href }}" target="_blank">{{ item.text }}</a>
+									{% else %}
+										<a class="header__link" href="{{ item.href }}">{{ item.text }}</a>
+									{% endif %}
+									{% if item.submenu %}
+										<ul class="header__submenu">
+											{% for sub_item in item.submenu %}
+												<li class="header__submenu-item">
+													{% if sub_item.href == PAGE %}
+														<a class="header__submenu-link header__submenu-link--active">{{ sub_item.text }}</a>
+													{% elseif sub_item.blank %}
+														<a class="header__submenu-link" href="{{ sub_item.href }}" target="_blank">{{ sub_item.text }}</a>
+													{% else %}
+														<a class="header__submenu-link" href="{{ sub_item.href }}">{{ sub_item.text }}</a>
+													{% endif %}
+												</li>
+											{% endfor %}
+										</ul>
+									{% endif %}
+								</li>
+							{% endfor %}
+						</ul>
+						<button class="header__toggler header__toggler--opener" aria-label="Закрыть меню"></button>
+					{% endif %}
+				</nav>
+			</header>
+		{% endif %}
+
+		<main>{{ TEMPLATE }}</main>
+
+		<footer class="footer" id="contacts">
+			{% block question %}
+				{% if FORMS|first and (FORMS|first).id < 3 %}
+					<div class="footer__feedback">
+						<div class="container">
+							{% if FOOTER_FEEDBACK_TEXT %}
+								{{ FOOTER_FEEDBACK_TEXT }}
+							{% else %}
+								<b class="footer__lead">
+									Есть вопросы, связанные с тренингом и другими мероприятиями?<br>
+									Оставьте запрос, мы с вами свяжемся и все расскажем!
+								</b>
+							{% endif %}
+							{% include 'fragments/ticket-button.twig' with { form: FORMS|first } %}
+						</div>
+					</div>
+				{% endif %}
+			{% endblock %}
+
+			<div class="footer__contacts">
+				<div class="container">
+					{% block footer_contacts %}
+						<div class="center">
+							{% if SITE_TEL or TEL_ADD %}
+								<div class="footer__contacts-link">
+									{% if SITE_TEL %}
+										{% include "fragments/tel-links.twig" with { tel: SITE_TEL } %}
+									{% endif %}
+									{% if TEL_ADD %}
+										<div class="t-gap">{{ TEL_ADD }}</div>
+									{% endif %}
+								</div>
+							{% endif %}
+							{% if SITE_MAIL %}
+								<a class="footer__contacts-link" href="mailto:{{ SITE_MAIL }}"><span class="footer__contacts-link-text">{{ SITE_MAIL }}</span></a>
+							{% endif %}
+						</div>
+					{% endblock %}
+					<div class="footer__bottom">
+						<div class="ya-share"></div>
+						{% include 'fragments/socials.twig' with { mix: 'footer__socials' } %}
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		{% for form in FORMS %}
+			{% include 'ticket-form.twig' %}
+		{% endfor %}
+	{% endapply %}
+	{% if not(IS_DEV) %}
+		<script src="//yastatic.net/share2/share.js"></script>
+	{% endif %}
+	<script>
+		window.VERSION = '{{ VERSION }}';
+	</script>
+	<script src="/js/script.min.js?version={{ VERSION }}"></script>
+	{{ SITE_FOOT_CODE }}
+	{{ SCRIPTS }}
+</body>
+</html>

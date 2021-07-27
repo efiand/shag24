@@ -1,0 +1,44 @@
+{% extends 'main.twig' %}
+
+{% block head %}
+	<link rel="preload" href="/fonts/opensans.woff2" as="font" crossorigin="anonymous">
+	<link rel="preload" href="/fonts/opensanssemibold.woff2" as="font" crossorigin="anonymous">
+	<link rel="preload" href="/fonts/stereonic-l.woff2" as="font" crossorigin="anonymous">
+	<link rel="preload" href="/fonts/stereonic-s.woff2" as="font" crossorigin="anonymous">
+	<link rel="apple-touch-icon" sizes="76x76" href="/img/khara/apple-touch-icon.png">
+	<link rel="icon" type="image/x-icon" href="/img/khara/favicon.ico">
+	<link rel="icon" type="image/png" sizes="32x32" href="/img/khara/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/img/khara/favicon-16x16.png">
+	<link rel="manifest" href="/img/khara/site.webmanifest">
+	<link rel="mask-icon" href="/img/khara/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#e84d18">
+	<meta name="theme-color" content="#ffffff">
+{% endblock %}
+
+{% block header_top %}
+	<div class="header__top">
+		<div class="header__contacts container">
+			{% include 'fragments/socials.twig' with { mix: 'header__socials' } %}
+			{% include 'fragments/tel-links.twig' with {
+				mix: 'header__tel-link header__contact-link',
+				tel: SITE_TEL
+			} %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block header_logo %}
+	<a class="header__logo-link" href="/">
+		<img alt="Логотип Дмитрия Хара" class="header__logo" src="/img/khara/logo.svg" width="200">
+		<span class="sr-only">На главную страницу</span>
+	</a>
+{% endblock %}
+
+{% block question %}{% endblock %}
+
+{% block footer_contacts %}
+	<p>
+		© 2019 Дмитрий Хара – Все права защищены<br>
+		<small><a href="/soglashenie-na-obrabotku-personalnyh-dannyh">Соглашение на обработку персональных данных</a></small>
+	</p>
+{% endblock %}

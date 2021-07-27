@@ -1,0 +1,31 @@
+<section class="content people-list {{ PEOPLE_SWITCHABLE ? 'switchable' }}" id="{{ PEOPLE_ANCHOR ?? 'people-list' }}">
+	{% if PEOPLE_HEADING %}
+		<h2 class="people-list__heading {{ PEOPLE_SWITCHABLE ? 'switchable__toggler' }}">
+			{{ PEOPLE_HEADING }}
+			{% if PEOPLE_SWITCHABLE %}
+				<button class="switchable__button" aria-label="Переключить видимость"></button>
+			{% endif %}
+		</h2>
+	{% endif %}
+	<div class="people-list__body {{ PEOPLE_SWITCHABLE ? 'switchable__details' }}">
+		{% if PEOPLE_LIST_BEFORE %}
+			<div class="b-gap">
+				{{ PEOPLE_LIST_BEFORE }}
+			</div>
+		{% endif %}
+		<div class="people-list__list grid">
+			{% for item in PEOPLE_LIST_ITEMS %}
+				{% if item.name %}
+					<div class="col-3 b-gap">
+						<img alt="{{ item.name }}" src="{{ item.img }}?version={{ VERSION }}">
+						<h3 class="people-list__heading">{{ item.name }}</h3>
+						<div class="people-list__description center">{{ item.description }}</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+		{% if PEOPLE_LIST_AFTER %}
+			{{ PEOPLE_LIST_AFTER }}
+		{% endif %}
+	</div>
+</section>

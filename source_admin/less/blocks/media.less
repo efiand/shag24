@@ -1,0 +1,18 @@
+@import "../../../source_html/less/blocks/media";
+
+.media {
+	&--gray {
+		filter: grayscale(1);
+		transition: filter 0.6s ease-in-out;
+
+		&:hover,
+		&:focus {
+			filter: grayscale(0);
+		}
+	}
+}
+
+.media-info {
+	margin-top: 1em;
+	text-align: center;
+}

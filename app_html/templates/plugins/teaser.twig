@@ -1,0 +1,12 @@
+<section class="teaser">
+	{{ TEASER_IMG }}
+	<div class="container teaser__inner">
+		{% include 'fragments/socials.twig' with { mix: 'teaser__socials' } %}
+		<div class="content center teaser__info">
+			{{ TEASER_CONTENT }}
+			{% if PROGRAM %}
+				<a class="teaser__down-link" href="#program" aria-label="Программа"></a>
+			{% endif %}
+		</div>
+	</div>
+</section>

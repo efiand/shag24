@@ -1,0 +1,8 @@
+AddDefaultCharset UTF-8
+Options All -Indexes +FollowSymLinks
+Header set Access-Control-Allow-Origin *
+
+RewriteEngine On
+
+RewriteCond %{HTTPS} =off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]

@@ -1,0 +1,39 @@
+.sr-only {
+	position: fixed;
+	right: 200vw;
+}
+
+.hidden {
+	display: none !important;
+
+	@media @tablet {
+		display: none;
+	}
+
+	@media @desktop {
+		display: none;
+	}
+}
+
+.show-mobile {
+	@media @tablet {
+		display: none;
+	}
+}
+
+.hidden-mobile {
+	@media @mobile-only {
+		display: none;
+	}
+}
+
+.hidden-desktop {
+	@media @desktop {
+		display: none;
+	}
+}
+
+// плейсхолдеры
+.unit-wrap {
+	display: none;
+}

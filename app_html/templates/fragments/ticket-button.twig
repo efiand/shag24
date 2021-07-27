@@ -1,0 +1,8 @@
+<button class="button {{ form.attach ? 'button--alter' }}" data-open="form-{{ form.id }}">
+	{% if form.payment_target %}
+		<svg aria-hidden="true" width="22" height="22">
+			<use xlink:href="#payment"/>
+		</svg>&nbsp;
+	{% endif %}
+	{{ form.opener_title }}
+</button>
