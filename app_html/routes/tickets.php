@@ -12,7 +12,7 @@ if (!isset($_POST['agree'])) {
 	$res['status'] = 'Недопустимый источник.';
 } else if (!isset($_POST['name'])) {
 	$res['status'] = 'Представьтесь, пожалуйста!';
-} else if (!isset($_POST['mail']) || !filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+} else if (!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 	$res['status'] = 'Введите корректный e-mail!';
 }
 if ($res['status']) {
@@ -45,7 +45,7 @@ $double_query = 'SELECT id FROM data_tickets WHERE
 	topic = "' . $req['topic'] . '" AND
 	page = "' . $req['page'] . '" AND
 	name = "' . $req['name'] . '" AND
-	mail = "' . $req['mail'] . '"';
+	email = "' . $req['email'] . '"';
 
 if (isset($req['phone'])) {
 	$req['phone'] = substr(preg_replace('/[^0-9+]/', '', $req['phone']), 0, 14);

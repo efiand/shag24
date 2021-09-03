@@ -26,7 +26,7 @@ if ($form['mail_body'] && $do_mail_user) {
 
 	$message = (new Swift_Message($mail_topic))
 		->setFrom($mail_sender)
-		->setTo([$req['mail']]);
+		->setTo([$req['email']]);
 	if (isset($attachment)) {
 		$message->attach($attachment);
 	}

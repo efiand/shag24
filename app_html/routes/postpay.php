@@ -68,8 +68,8 @@ if (json_last_error() === JSON_ERROR_NONE && isset($payload['Status'])) {
 						. $req['topic'] . '" AND page = "'
 						. $req['page'] . '" AND name = "'
 						. $req['name'] . '" AND phone = "'
-						. $req['phone'] . '" AND mail = "'
-						. $req['mail'] . '" AND form_id = '
+						. $req['phone'] . '" AND email = "'
+						. $req['email'] . '" AND form_id = '
 						. $req['form_id'] . ' AND payment_status <> "' . $confirmed_status . '"');
 					log_item('Дубли заявки ' . $req['id'] . ' удалены');
 				}

@@ -5,11 +5,11 @@ if ($adminzone === 'khara') {
 } else {
 	$page_query = ' (page LIKE "%shag24%" or page LIKE "rusnlp%" or page LIKE "%videnin%")';
 }
-$query = 'SELECT id, create_time, topic, page, name, city, phone, mail, instagram, message, promocode, order_id, payment_status FROM data_tickets WHERE'
+$query = 'SELECT id, create_time, topic, page, name, city, phone, email as mail, instagram, message, promocode, order_id, payment_status FROM data_tickets WHERE'
 	. $page_query;
 if ($payload['keywords']) {
 	$keywords = trim($payload['keywords']);
-	$query .= ' AND (name LIKE "%' . $keywords . '%" OR topic LIKE "%' . $keywords . '%" OR city LIKE "%' . $keywords . '%" OR phone LIKE "%' . $keywords . '%" OR mail LIKE "%' . $keywords . '%" OR instagram LIKE "%' . $keywords . '%" OR message LIKE "%' . $keywords . '%" OR promocode LIKE "%' . $keywords . '%" OR order_id LIKE "%' . $keywords . '%")';
+	$query .= ' AND (name LIKE "%' . $keywords . '%" OR topic LIKE "%' . $keywords . '%" OR city LIKE "%' . $keywords . '%" OR phone LIKE "%' . $keywords . '%" OR email LIKE "%' . $keywords . '%" OR instagram LIKE "%' . $keywords . '%" OR message LIKE "%' . $keywords . '%" OR promocode LIKE "%' . $keywords . '%" OR order_id LIKE "%' . $keywords . '%")';
 }
 if ($payload['ticketPage']) {
 	$query .= ' AND page = "' . $payload['ticketPage'] . '"';

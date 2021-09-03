@@ -26,7 +26,7 @@ foreach ($adminzone_domain_aliases as $i => $site) {
 $site_query .= ')';
 
 
-$query = 'SELECT create_time, topic, page, name, city, phone, mail, instagram, message, promocode, order_id, payment_status FROM data_tickets WHERE '. $site_query;
+$query = 'SELECT create_time, topic, page, name, city, phone, email, instagram, message, promocode, order_id, payment_status FROM data_tickets WHERE '. $site_query;
 if ($payload['ticketPage']) {
 	$query .= ' AND page = "' . $payload['ticketPage'] . '"';
 }
