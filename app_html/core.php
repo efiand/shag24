@@ -134,7 +134,7 @@ if ($pagedata['id']) {
 		}
 		$type = $param['type'] ?? 'text';
 		$value = $param['value'] ?? '';
-		if (substr($alias, 0, 13) === 'PLACE_SWITCH_') {
+		if (substr($alias, 0, 13) === 'PLACE_SWITCH_' && $value) {
 			$places_with_fragments[] = strtolower(substr($alias, 13));
 		}
 		if ($value) {
