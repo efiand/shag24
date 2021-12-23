@@ -1,10 +1,6 @@
 <?php
+$page_query = ' (page' . ($adminzone === 'khara' ? '' : ' NOT') . ' LIKE "%hara%")';
 
-if ($adminzone === 'khara') {
-	$page_query = ' (page LIKE "khara%")';
-} else {
-	$page_query = ' (page LIKE "%shag24%" or page LIKE "rusnlp%" or page LIKE "%videnin%")';
-}
 $query = 'SELECT id, create_time, topic, page, name, city, phone, email as mail, instagram, message, promocode, order_id, payment_status FROM data_tickets WHERE'
 	. $page_query;
 if ($payload['keywords']) {
