@@ -7,8 +7,6 @@
 * https://rusnlp.ru
 * https://shag24.ru
 * https://shag24fest.ru
-* https://shag24online.ru
-* https://shag24sochi.ru
 * https://videnin24.ru
 
 
