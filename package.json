@@ -28,7 +28,7 @@
 		"less": "3.13.1",
 		"lodash.debounce": "4.0.8",
 		"mqpacker": "7.0.0",
-		"postcss": "^8.3.0",
+		"postcss": "^8.4.31",
 		"precommit": "1.2.2",
 		"require-dir": "1.2.0",
 		"rollup": "2.36.1",
