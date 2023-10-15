@@ -1,0 +1,355 @@
+section.content,
+section.schedule {
+	max-width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 40px 20px 0;
+
+	@media @tablet {
+		padding: 40px 40px 0;
+	}
+
+	@media @desktop {
+		padding: 70px 0 0;
+	}
+
+	&:first-child {
+		border-top: 40px solid transparent;
+
+		.site-2 &,
+		.site-8 & {
+			border-top-width: 120px;
+
+			@media @desktop {
+				border-top-width: 60px;
+			}
+		}
+	}
+
+	&:last-child {
+		padding-bottom: 40px;
+
+		@media @desktop {
+			padding-bottom: 70px;
+		}
+	}
+
+	h1,
+	h2,
+	h3 {
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}
+
+.wysiwyg.content {
+	h1,
+	h2,
+	h3 {
+		&:first-child {
+			margin-top: 0.5em;
+		}
+	}
+}
+
+.content {
+	h1,
+	h2,
+	h3 {
+		margin: 1.5em 0 1em;
+		text-align: center;
+	}
+
+	h1,
+	h2 {
+		font-weight: 400;
+		font-size: 20px;
+
+		@media @tablet {
+			font-size: 28px;
+		}
+	}
+
+	h1:not(:first-child) {
+		margin: 0.5em 0;
+	}
+
+	h3 {
+		font-weight: 500;
+		font-size: 18px;
+
+		@media @tablet {
+			font-size: 20px;
+		}
+	}
+
+	p {
+		cite:only-child {
+			display: block;
+			margin-bottom: 8px;
+			text-align: right;
+		}
+
+		img:only-child {
+			display: inline-block;
+			vertical-align: baseline;
+		}
+
+		&:not(:last-child) {
+			margin: 0 0 1em;
+		}
+
+		& + address {
+			margin: -0.5em 0 1em;
+		}
+	}
+
+	li {
+		ul,
+		ol {
+			&:not(.ib-t) {
+				margin-top: 0.25em;
+			}
+		}
+	}
+
+	li:not(:last-child) {
+		margin: 0 0 0.25em;
+	}
+
+	ul {
+		margin: 0 0 1em;
+
+		> li {
+			position: relative;
+			padding-left: 16px;
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 8px;
+				left: 0;
+				width: 4px;
+				height: 4px;
+				background-color: var(--color-blacky);
+			}
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	ol {
+		counter-reset: list;
+		margin: 0 0 1em;
+
+		> li {
+			position: relative;
+			padding-left: 20px;
+
+			&::before {
+				content: counter(list);
+				counter-increment: list;
+				position: absolute;
+				top: 3px;
+				left: 0;
+				font-size: 12px;
+			}
+		}
+
+		li.alter {
+			&::before {
+				color: var(--color-secondary);
+			}
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.khara .content,
+.khara.content,
+.khara .schedule {
+	&:first-child {
+		border-top-width: 120px;
+
+		@media @desktop {
+			border-top-width: 100px;
+		}
+	}
+}
+
+.khara .content,
+.khara .schedule {
+	&:not(:last-child) {
+		&::after {
+			content: "";
+			display: block;
+			height: 1px;
+			margin: 40px -50vw 0;
+			background-color: var(--color-grey-fade-50);
+
+			@media @desktop {
+				margin-top: 80px;
+			}
+		}
+	}
+}
+
+.khara .content,
+.khara.content {
+	h1,
+	h2,
+	h3 {
+		font-family: var(--font-lead);
+		color: var(--color-dark);
+
+		strong {
+			color: var(--color-dark);
+		}
+	}
+
+	strong {
+		color: var(--color-primary);
+	}
+
+	h1,
+	h2 {
+		margin-bottom: 0.75em;
+		font-size: 2rem;
+		text-align: left;
+
+		@media @tablet {
+			font-size: 3rem;
+		}
+	}
+
+	h3 {
+		font-size: 1.5rem;
+		letter-spacing: 1px;
+		text-align: left;
+		color: var(--color-primary);
+	}
+
+	ul {
+		li {
+			&::before {
+				background-color: var(--color-primary);
+			}
+		}
+	}
+
+	ol {
+		li {
+			&::before {
+				color: var(--color-primary);
+			}
+		}
+	}
+}
+
+.khara24 .content,
+.khara24.content {
+	h1,
+	h2,
+	h3 {
+		strong {
+			color: var(--color-secondary);
+		}
+	}
+
+	strong {
+		font-weight: 500;
+		color: var(--color-primary);
+	}
+
+	ul {
+		li {
+			&::before {
+				background-color: var(--color-primary);
+			}
+		}
+
+		li.alter {
+			&::before {
+				background-color: var(--color-secondary);
+			}
+		}
+	}
+
+	ol {
+		li {
+			&::before {
+				color: var(--color-primary);
+			}
+		}
+	}
+}
+
+.kharasho .content,
+.kharasho.content {
+	h1,
+	h2,
+	h3 {
+		strong {
+			color: var(--color-secondary);
+		}
+	}
+
+	strong {
+		font-weight: 500;
+		color: var(--color-primary);
+	}
+
+	ul {
+		li {
+			&::before {
+				background-color: var(--color-primary);
+			}
+		}
+
+		li.alter {
+			&::before {
+				background-color: var(--color-secondary);
+			}
+		}
+	}
+
+	ol {
+		li {
+			&::before {
+				color: var(--color-primary);
+			}
+		}
+	}
+}
+
+.rusnlp .content,
+.rusnlp.content {
+	strong {
+		font-weight: 500;
+		color: var(--color-primary);
+	}
+
+	ul {
+		li,
+		li.alter {
+			&::before {
+				background-color: var(--color-primary);
+			}
+		}
+	}
+
+	ol {
+		li,
+		li.alter {
+			&::before {
+				color: var(--color-primary);
+			}
+		}
+	}
+}

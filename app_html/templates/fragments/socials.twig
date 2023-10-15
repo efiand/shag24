@@ -1,0 +1,11 @@
+<ul class="socials {{ mix }}">
+	{% for social in SOCIALS %}
+		<li>
+			<a class="socials__link" href="{{ social.url }}" aria-label="{{ social.text }}">
+				<svg class="socials__icon" aria-hidden="true" width="15" height="15">
+					<use xlink:href="#{{ social.alias }}"/>
+				</svg>
+			</a>
+		</li>
+	{% endfor %}
+</ul>

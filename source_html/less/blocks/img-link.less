@@ -1,0 +1,39 @@
+.img-link {
+	position: relative;
+	display: table;
+	max-width: 570px;
+	margin: 0 auto;
+
+	.khara & {
+		margin: 0;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: var(--color-primary);
+		background-image: inherit;
+		background-size: cover;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	img {
+		display: block;
+	}
+
+	&:hover,
+	&:focus {
+		&::after {
+			opacity: 0.5;
+
+			.khara & {
+				opacity: 1;
+			}
+		}
+	}
+}

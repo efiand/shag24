@@ -1,0 +1,11 @@
+{% for agent in agents %}
+User-agent: {{ agent }}
+{% for item in disallow %}
+Disallow: {{ item }}
+{% endfor %}
+Sitemap: https://{{ HOST }}/sitemap.xml
+{% if agent == 'Yandex' %}
+Host: https://{{ HOST }}
+{% endif %}
+
+{% endfor %}

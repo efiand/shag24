@@ -1,0 +1,70 @@
+.checker {
+	display: table;
+	margin: 0 0 20px;
+	font-size: 14px;
+
+	a {
+		color: var(--color-primary);
+
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+}
+
+.checker__label {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 2px;
+	padding-left: 30px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 20px;
+		height: 20px;
+		border: 1px solid var(--color-blacky-fade-25);
+		border-radius: 2px;
+		cursor: pointer;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		width: 11px;
+		height: 6px;
+		border-bottom: 2px solid var(--color-primary);
+		border-left: 2px solid var(--color-primary);
+		border-bottom-left-radius: 2px;
+		transform: rotate(-45deg);
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+		pointer-events: none;
+
+		:checked + & {
+			opacity: 1;
+		}
+	}
+
+	&--radio {
+		&::before {
+			top: -1px;
+			border-radius: 50%;
+		}
+
+		&::after {
+			top: 7px;
+			left: 8px;
+			width: 6px;
+			background-color: var(--color-primary);
+			border: none;
+			border-radius: 50%;
+		}
+	}
+}

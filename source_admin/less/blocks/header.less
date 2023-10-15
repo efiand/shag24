@@ -1,0 +1,190 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px 20px;
+	background-color: var(--color-blacky-fade-95);
+
+	@media @desktop {
+		padding: 10px 40px 0;
+	}
+
+	.khara & {
+		background-color: var(--color-bg-fade);
+	}
+
+	.toggler {
+		position: relative;
+		width: 24px;
+		height: 22px;
+		padding: 0;
+		color: var(--color-primary);
+		background-color: transparent;
+		border: 0;
+		transition: color 0.3s ease-in-out;
+		cursor: pointer;
+		user-select: none;
+
+		@media @desktop {
+			display: none;
+		}
+
+		&:hover,
+		&:focus {
+			color: var(--color-primary);
+		}
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 24px;
+			height: 4px;
+			background-color: currentColor;
+		}
+
+		&::before {
+			top: 0;
+			transition: top 0.3s 0.3s ease-in-out, transform 0.3s ease-in-out;
+		}
+
+		&::after {
+			bottom: 0;
+			transition: bottom 0.3s 0.3s ease-in-out, transform 0.3s ease-in-out;
+		}
+
+		&.opener {
+			background-image: linear-gradient(transparent 9px, currentColor 9px, currentColor 13px, transparent 13px);
+		}
+
+		&.closer {
+			background-image: none;
+
+			&::before {
+				top: 9px;
+				transform: rotate(45deg);
+				transition: top 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out;
+			}
+
+			&::after {
+				bottom: 9px;
+				transform: rotate(-45deg);
+				transition: bottom 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out;
+			}
+		}
+
+		.khara & {
+			color: var(--color-dark);
+
+			// Без этих дублей средняя полоса изначально рыжая, TODO переделать полностью цвета на css-переменные,
+			// чтобы они переопределялись на уровне сайта, а не внутри блоков и элементов
+			&:hover,
+			&:focus {
+				color: var(--color-primary);
+			}
+
+			&.opener {
+				background-image: linear-gradient(transparent 9px, currentColor 9px, currentColor 13px, transparent 13px);
+			}
+		}
+	}
+
+	nav {
+		@media @desktop {
+			display: flex;
+		}
+	}
+
+	ul {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: 17px;
+
+		@media @desktop {
+			display: flex;
+			flex-wrap: wrap;
+			padding-top: 8px;
+		}
+
+		@media @no-desktop {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			z-index: -1;
+			display: block;
+			width: 100%;
+			height: calc(100vh - 56.15px);
+			padding: 10px 0;
+			overflow-y: auto;
+			background-color: var(--color-blacky-fade-95);
+
+			.khara & {
+				background-color: var(--color-bg-fade);
+			}
+		}
+	}
+
+	li {
+		margin: 0 20px;
+
+		@media @desktop {
+			margin: 0 40px 0 0;
+		}
+	}
+
+	.link {
+		display: table;
+		margin-bottom: 20px;
+		text-decoration: none;
+
+		.shag24 & {
+			color: var(--color-white);
+		}
+
+		.khara & {
+			color: var(--color-dark);
+		}
+
+		&:not([href]),
+		&:hover,
+		&:focus {
+			color: var(--color-primary) !important;
+		}
+
+		.opened & {
+			@media @no-desktop {
+				line-height: 40px;
+			}
+		}
+	}
+
+	label {
+		flex-direction: row-reverse;
+		align-items: baseline;
+		margin-top: 16px;
+		margin-bottom: 0;
+
+		@media @desktop {
+			margin-top: 0;
+		}
+
+		span {
+			margin-right: 8px;
+			color: var(--color-white);
+
+			.khara & {
+				color: var(--color-dark);
+			}
+
+			@media @no-desktop {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}

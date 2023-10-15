@@ -1,0 +1,49 @@
+.cols	{
+	margin-left: -30px;
+
+	@media @tablet {
+		display: flex;
+		flex-wrap: wrap;
+		width: calc(100% + 30px);
+	}
+}
+
+.cols__half,
+.cols__third,
+.cols__quart,
+.cols__subtotal,
+.cols__total {
+	flex-shrink: 0;
+	box-sizing: border-box;
+	width: 100%;
+	padding-left: 30px;
+
+	> img {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+.cols__quart {
+	@media @tablet {
+		width: 25%;
+	}
+}
+
+.cols__third {
+	@media @desktop {
+		width: 100% * 1/3;
+	}
+}
+
+.cols__half {
+	@media @tablet {
+		width: 50%;
+	}
+}
+
+.cols__subtotal {
+	@media @tablet {
+		width: 75%;
+	}
+}
