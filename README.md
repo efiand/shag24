@@ -1,12 +1,9 @@
 # shag24
 
 Программный код публичной и административной части сайтов:
-* https://khara.ru
 * https://khara24.ru
-* https://kharasho.ru
 * https://rusnlp.ru
 * https://shag24.ru
-* https://shag24fest.ru
 * https://videnin24.ru
 
 
